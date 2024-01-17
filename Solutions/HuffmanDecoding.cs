@@ -16,8 +16,6 @@ namespace Solutions
             int index = 0;
             int n = archive.Length;
 
-            while (index < n)
-            {
                 string key = "";
 
                 while (index < n)
@@ -27,10 +25,10 @@ namespace Solutions
                     if (dictionary.Contains(key))
                     {
                         OriginalText += (char) ( ((int)('A')) + (Array.IndexOf(dictionary,key) ) );
-                        break;
+                        key = "";
+                     
                     }
                 }
-            }
 
             return OriginalText;
         }
