@@ -7,35 +7,22 @@ using System.Threading.Tasks;
 namespace Solutions
 {
     public class SortingSubsets
-    {
-        public int[] nums = new int[11];
-        public void setInput()
-        {
-
-            nums = [ 11, 11, 49, 7, 11, 11, 7, 7, 11, 49, 11 ];
-
-        }
-        public int getMinimalSize(int[] nums)   
+    {   
+        public int getMinimalSize(int[] a)   
         {
             int change = 0;
-            int length= nums.Length;
+            int length= a.Length;
 
+            int[] Duplicate=new int[length];
 
-            int[] arr = new int[length];
-
-            for (int i = 0; i < length; i++)
-            {
-                arr[i] = nums[i];
-            }
-            Array.Sort(arr);
+            a.CopyTo(Duplicate, 0 );
+            Array.Sort(Duplicate);
 
             for (int i = 0; i <length; i++)
             {
-                if (arr[i] != nums[i])
+                if (Duplicate[i] != a[i])
                     change++;
             }
-
-
 
             return change;
         }

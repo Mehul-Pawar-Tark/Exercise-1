@@ -15,8 +15,8 @@ namespace SolutionsTesting
         {
             var largestSubsequence = new LargestSubsequence();
 
-            String[] strs = {"test","a","example", "aquickbrownfoxjumpsoverthelazydog" };
-            String[] answers = { "tt","a","xple","zyog"};
+            String[] strs = getstrs();
+            String[] answers = getanswers();
 
             bool isValid = true;
 
@@ -29,6 +29,16 @@ namespace SolutionsTesting
             }
 
             Assert.IsTrue(isValid); 
+        }
+
+        public String[] getanswers()
+        { 
+            return new String[] { "tt", "a", "xple", "zyog" };
+        }
+
+        public String[] getstrs() 
+        {
+           return new String[] { "test", "a", "example", "aquickbrownfoxjumpsoverthelazydog" };
         }
     }
 }

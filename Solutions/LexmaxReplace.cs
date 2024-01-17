@@ -8,29 +8,20 @@ namespace Solutions
 {
     public class LexmaxReplace
     {
-        public String s = "";
-        public String t = "";
-        public void setInput()
-        {
-            s = "abb";
-            t = "c";
-        }
         public String get(String s,String t) 
         {
             String lexicographicalString = "";
-            char[] S = s.ToCharArray();
-            char[] T = t.ToCharArray();
+
+            char[] array_of_s = s.ToCharArray();
+            char[] arrays_of_t = t.ToCharArray();
             
-            Array.Sort(T);
-            int Index = T.Length-1;
+            Array.Sort(arrays_of_t);
+            int Index = arrays_of_t.Length-1;
 
 
-            for(int i=0; i<S.Length; i++)
+            for(int i=0; i<array_of_s.Length; i++)
             {
-                if (Index>=0 && T[Index] > S[i])
-                    lexicographicalString+= T[Index--];
-                else
-                    lexicographicalString += S[i];
+                lexicographicalString += (Index >= 0 && arrays_of_t[Index] > array_of_s[i]) ? arrays_of_t[Index--] : array_of_s[i];
             }
             
             return lexicographicalString;

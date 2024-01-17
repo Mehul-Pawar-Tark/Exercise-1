@@ -17,26 +17,35 @@ namespace SolutionsTesting
 
             bool isvalide = true;
 
-            List<int[]> numbers=new List<int[]>();
-            int[] val1 = { 3, 2, 1 }; numbers.Add(val1);
-            int[] val2 = { 1, 2, 3, 4 }; numbers.Add(val2);
-            int[] val3 = { 4, 4, 4, 3, 3, 3 }; numbers.Add(val3);
-            int[] val4 = { 11, 11, 49, 7, 11, 11, 7, 7, 11, 49, 11 }; numbers.Add(val4);
-            
-            int[] answer = {2,0,6,7 };
+            List<int[]> Numbers = getNumbers();
 
-            
-            for(int i = 0; i < numbers.Count; i++)
+            int[] answer = getAnswers();
+
+            for (int i = 0; i < Numbers.Count; i++)
             {
-                if (!(sortingSubsets.getMinimalSize(numbers[i]).Equals(answer[i])))
+                if (!(sortingSubsets.getMinimalSize(Numbers[i]).Equals(answer[i])))
                 {
-                    isvalide = false;break;
+                    isvalide = false; break;
                 }
             }
 
-
             Assert.IsTrue(isvalide);
 
+        }
+
+        public int[] getAnswers()
+        {
+            return new int[] { 2, 0, 6, 7 };
+        }
+        public List<int[]> getNumbers()
+        {
+            List<int[]> Numbers = new List<int[]>();
+            Numbers.Add(new int[] { 3, 2, 1 });
+            Numbers.Add(new int[] { 1, 2, 3, 4 });
+            Numbers.Add(new int[] { 4, 4, 4, 3, 3, 3 });
+            Numbers.Add(new int[] { 11, 11, 49, 7, 11, 11, 7, 7, 11, 49, 11 });
+
+            return Numbers;
         }
     }
 }

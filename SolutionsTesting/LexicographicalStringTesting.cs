@@ -13,13 +13,12 @@ namespace SolutionsTesting
         [TestMethod]
         public void get_LexicographicalString_Returnstrue()
         {
-
             var lexmaxReplace = new LexmaxReplace();
 
-            String[] S ={"abb","z","fedcba","top", "xldyzmsrrwzwaofkcxwehgvtrsximxgdqrhjthkgfucrjdvwlr" };
-            String[] T = {"c","f","ee","coder", "xfpidmmilhdfzypbguentqcojivertdhshstkcysydgcwuwhlk" };
+            String[] S =GetS();
+            String[] T = GetT();
 
-            String[] Answer = { "cbb","z","feeeba","trp", "zyyyzyxwwwzwvuuttxwtssvtssxrqxppqrontmmllukrkjvwlr"};
+            String[] Answer = GetAnswers();
 
             bool isvalid = true;
             
@@ -31,8 +30,20 @@ namespace SolutionsTesting
                 }
             }
             
-
             Assert.IsTrue(isvalid);
+        }
+
+        public String[] GetAnswers()
+        {
+            return new String[] { "cbb", "z", "feeeba", "trp", "zyyyzyxwwwzwvuuttxwtssvtssxrqxppqrontmmllukrkjvwlr" };
+        }
+        public String[] GetS()
+        {
+            return new String[] { "abb", "z", "fedcba", "top", "xldyzmsrrwzwaofkcxwehgvtrsximxgdqrhjthkgfucrjdvwlr" };
+        }
+        public String[] GetT()
+        {
+            return new String[] { "c", "f", "ee", "coder", "xfpidmmilhdfzypbguentqcojivertdhshstkcysydgcwuwhlk" };
         }
     }
 }

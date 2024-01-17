@@ -15,26 +15,36 @@ namespace SolutionsTesting
         {
             var islands = new Islands();
 
-            List<String[]> kingdoms= new List<String[]>();
-            String[] kingdome1 = { ".#...#.." }; kingdoms.Add(kingdome1);
-            String[] kingdome2 = {"..#.##",".##.#.","#.#..."}; kingdoms.Add (kingdome2);
-            String[] kingdome3 = {"#...#.....","##..#...#."}; kingdoms.Add(kingdome3);
-            String[] kingdome4 = {"....#.",".#....","..#..#","####.."};kingdoms.Add(kingdome4);
-
-
-            int[] answers = { 4,19,15,24};
+            List<String[]> kingdoms = getKingdoms();
+           
+            int[] answers = getanswers();
 
             bool IsValid = true;
-       
-            for (int i = 0; i < answers.Length; i++) 
+
+            for (int i = 0; i < answers.Length; i++)
             {
                 if (!(islands.beachLength(kingdoms[i]).Equals(answers[i])))
                 {
-                    IsValid = false;    break;
+                    IsValid = false; break;
                 }
             }
 
             Assert.IsTrue(IsValid);
+        }
+
+        public int[] getanswers()
+        {
+            return new int[] {4, 19, 15, 24}; 
+        }
+        public List<String[]> getKingdoms() 
+        {
+            List<String[]> kingdoms =new List<String[]>();
+            kingdoms.Add(new String[] { ".#...#.." });
+            kingdoms.Add(new String[] { "..#.##", ".##.#.", "#.#..." });
+            kingdoms.Add(new String[] { "#...#.....", "##..#...#." });
+            kingdoms.Add(new String[] { "....#.", ".#....", "..#..#", "####.." });
+
+            return kingdoms;
         }
     }
 }

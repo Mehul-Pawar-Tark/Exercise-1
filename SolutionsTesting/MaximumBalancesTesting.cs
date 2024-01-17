@@ -11,12 +11,12 @@ namespace SolutionsTesting
     public class MaximumBalancesTesting
     {
         [TestMethod]
-        public void MaximumBalances() 
+        public void solve_CheckMaxBalance_ReturnsTrue() 
         {
             var maximumBalances = new MaximumBalances();
 
-            String[] strs = { };
-            String[] answers = { };
+            String[] strs = getStsrs();
+            int[] answers = getanswers();
 
             bool IsValid = true;
 
@@ -30,5 +30,16 @@ namespace SolutionsTesting
 
             Assert.IsTrue(IsValid); 
         }
+        public int[] getanswers()
+        {
+            return new int[] { 0, 3, 1, 10 };
+
+        }
+
+        public String[] getStsrs()
+        {
+            return new String[]  { "((((", "(())", ")))())", "))()()))(()" };
+        }
+
     }
 }

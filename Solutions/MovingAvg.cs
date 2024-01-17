@@ -8,41 +8,33 @@ namespace Solutions
 {
     public class MovingAvg
     {
-        public int n;
-        public double[]numbers=new double[3];
-
-        public void setInput()
+        public double difference(int k, double[] data)
         {
-            n= 3;
-            numbers = [ 6, 2.5, 3.5] ;
-        }
-        public double difference(int n, double[] numbers)
-        {
-            int len=numbers.Length;
+            int Length=data.Length;
             double sum = 0;
           
-            for(int i=0; i<n; i++)
+            for(int index=0; index<k; index++)
             {
-                sum += numbers[i];
+                sum += data[index];
             }
 
-            double min = sum / n;
-            double max = sum / n;
+            double Minimum = sum / k;
+            double Maximum = sum / k;
 
-            for(int i=n; i<len; i++)
+            for(int index=k; index<Length; index++)
             {
-                sum += numbers[i] - numbers[i - n];
+                sum += data[index] - data[index - k];
 
-                if((sum/n)<min)
-                    min = sum / n;
+                //Update Minimum and Maximum average values
+
+                if ( (sum/k) < Minimum)
+                    Minimum = sum / k;
             
-                if ((sum / n) >max)
-                    max = sum / n;
+                if ( (sum/k) > Maximum)
+                    Maximum = sum / k;
             }
-            
 
-
-            return max-min;
+            return Maximum-Minimum;
         }
     }
 }

@@ -8,28 +8,13 @@ namespace Solutions
 {
     public class HuffmanDecoding
     {
-        public String Archive { get; set; }
-        public Dictionary<string, string> Dictionary { get; set; }
-
-        public void setinput()
+        public String decode(String archive, String[] dictionary)   //Convert encoded String in Original Text 
         {
-            Archive = "101101";
-
-            Dictionary = new Dictionary<string, string>(){{"00", "A"},
-                                                          {"10", "B"},
-                                                          {"01", "C"},
-                                                          {"11", "D" } };
-        }
-        
-
-        #region 1. Huffman
-        public String decode(String Archive, Dictionary<string, string> Dictionary)   //Convert encoded String in Original Text 
-        {
-            
+           
             String OriginalText = "";
 
             int index = 0;
-            int n = Archive.Length;
+            int n = archive.Length;
 
             while (index < n)
             {
@@ -37,11 +22,11 @@ namespace Solutions
 
                 while (index < n)
                 {
-                    key += Archive[index++];
+                    key += archive[index++];
 
-                    if (Dictionary.ContainsKey(key))
+                    if (dictionary.Contains(key))
                     {
-                        OriginalText += Dictionary[key];
+                        OriginalText += (char) ( ((int)('A')) + (Array.IndexOf(dictionary,key) ) );
                         break;
                     }
                 }
@@ -49,6 +34,5 @@ namespace Solutions
 
             return OriginalText;
         }
-        #endregion
     }
 }

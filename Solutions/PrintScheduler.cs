@@ -8,48 +8,53 @@ namespace Solutions
 {
     public class PrintScheduler
     {
-        public String[] threads = {"ABCDE" };
-        public String[] time_slices = { "0 20","0 21"};
-       
-        public String getOutput(String[] threads, String[] time_slices)
+        public String getOutput(String[] threads, String[] slices)
         {
             String ThreadsAccurence = "";
 
             //indexes[] for representing each threads index
             int[] indexes = new int[threads.Length];
 
-            //initialy allthreads are start running form 0 index
 
+            //initialy allthreads are start running form 0 index
             for (int i = 0; i < indexes.Length; i++)
                 indexes[i] = 0;
-            foreach (String time_slice in time_slices)
+
+
+            foreach (String slice in slices)
             {
-                int time_slice_index = 0;
-                String index = "";
+                int slice_index = 0;
 
-                while (time_slice_index < time_slice.Length && time_slice[time_slice_index] != ' ')
+                #region find Thread_no from time_slice
+
+                String Thread_Index_string = "";
+                while (slice_index < slice.Length && slice[slice_index] != ' ')
                 {
-                    index += time_slice[time_slice_index++];
+                    Thread_Index_string += slice[slice_index++];
                 }
-                int Thread_no = int.Parse(index);
 
-                String dur = "";
-                while (time_slice_index < time_slice.Length)
+                #endregion
+                int Thread_Index = int.Parse(Thread_Index_string);
+      
+
+                #region Find Duration from time_slice
+
+                String Duration_String = "";
+                while (slice_index < slice.Length)
                 {
-                    dur += time_slice[time_slice_index++];
+                    Duration_String += slice[slice_index++];
                 }
-                int duration = int.Parse(dur);
 
+                #endregion
+                int Duration = int.Parse(Duration_String);
 
-                for (int time = 0; time < duration; time++)
+                for (int time = 0; time < Duration; time++)
                 {
-                    String thread = threads[Thread_no];
-                    ThreadsAccurence += thread[indexes[Thread_no]];
+                    String Running_Thread = threads[Thread_Index];
+                    ThreadsAccurence += Running_Thread[indexes[Thread_Index]];
 
-
-                    indexes[Thread_no]++;
-                    indexes[Thread_no] %= thread.Length;
-
+                    indexes[Thread_Index]++;
+                    indexes[Thread_Index] %= Running_Thread.Length;
                 }
             }
 

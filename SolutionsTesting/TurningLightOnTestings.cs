@@ -15,36 +15,35 @@ namespace SolutionsTesting
         {
             var turningLightOn = new TurningLightOn();
 
-            List<String[]> Boards = new List<String[]>();
-            String[] board1 = { "0001111", "0001111", "1111111" };
-            Boards.Add(board1);
-            String[] board2 = { "1111111", "1111111", "1111111" };
-            Boards.Add(board2);
-            String[] board3 = { "01001" };
-            Boards.Add(board3);
-            String[] board4 = { "0101", "1010", "0101", "1010" };
-            Boards.Add(board4);
-
-
-
-            int[] answers = { 1, 0, 3, 7 };
+            List<String[]> Boards = getBoards();
+            int[] answers = getAnswer();
 
             bool IsValid = true;
-           
-            
-            
-            
-            for (int i=0; i<answers.Length; i++) 
+
+            for (int i = 0; i < answers.Length; i++)
             {
                 if (!(turningLightOn.minFlips(Boards[i]).Equals(answers[i])))
                 {
                     IsValid = false; break;
                 }
             }
-            
-
             Assert.IsTrue(IsValid);
+        }
 
+        public int[] getAnswer()
+        {
+            return new int[] { 1, 0, 3, 7 };
+        }
+
+        public List<String[]> getBoards()
+        {
+            List<String[]> Boards = new List<String[]>();
+            Boards.Add(new String[] { "0001111", "0001111", "1111111" });
+            Boards.Add(new String[] { "1111111", "1111111", "1111111" });
+            Boards.Add(new String[] { "01001" });
+            Boards.Add(new String[] { "0101", "1010", "0101", "1010" });
+
+            return Boards;
         }
     }
 }

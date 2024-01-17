@@ -15,27 +15,42 @@ namespace SolutionsTesting
         {
             var mailbox = new Mailbox();
 
-            String[] Collectins = {"AAAAAAABBCCCCCDDDEEE123456789", "ABCDEFGHIJKLMNOPRSTUVWXYZ1234567890",
-                                    "ABCDAAST"};
-            List<String[]> Addresses = new List<String[]>();
+            String[] Collectins = getCollections();
+            List<String[]> Addresses = getAddresses();
 
-            String[] addresses1 = { "123C", "123A", "123 ADA" }; Addresses.Add(addresses1);
-            String[] addresses2 = { "2 FIRST ST", " 31 QUINCE ST", "606 BAKER" }; Addresses.Add (addresses2);
-            String[] addresses3 = { "111 A ST", "A BAD ST", "B BAD ST" }; Addresses.Add(addresses3);
-
-            int[] answers = {0,3,2};
+            int[] answers = getAnswer();
 
             bool isvalid = true;
-           
-            for (int i=0; i < answers.Length; i++)
+
+            for (int i = 0; i < answers.Length; i++)
             {
                 if (!(mailbox.impossible(Collectins[i], Addresses[i]) == answers[i]))
                 {
-                    isvalid= false; break;
+                    isvalid = false; break;
                 }
             }
-            
+
             Assert.IsTrue(isvalid);
+        }
+
+        public List<String[]> getAddresses() 
+        {
+            List<String[]> Addresses = new List<String[]>();
+
+            Addresses.Add(new String[] { "123C", "123A", "123 ADA" });
+            Addresses.Add(new String[] { "2 FIRST ST", " 31 QUINCE ST", "606 BAKER" });
+            Addresses.Add(new String[] { "111 A ST", "A BAD ST", "B BAD ST" });
+
+            return Addresses;
+        }
+        public int[] getAnswer()
+        {
+            return new int[] { 0, 3, 2 };
+        }
+        public String[] getCollections() 
+        {
+          return new String[] {"AAAAAAABBCCCCCDDDEEE123456789", "ABCDEFGHIJKLMNOPRSTUVWXYZ1234567890",
+                                    "ABCDAAST"};
         }
     }
 }

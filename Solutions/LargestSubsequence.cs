@@ -8,15 +8,10 @@ namespace Solutions
 {
     public class LargestSubsequence
     {
-        public String str = "";
-        public void setInput()
-        {
-            this.str = "aquickbrownfoxjumpsoverthelazydog";
-        }
-        public String getLargest(String str) 
+        public String getLargest(String s) 
         { 
             String answer = "";
-            int n = str.Length;
+            int n = s.Length;
 
             int index = 0;
 
@@ -27,13 +22,13 @@ namespace Solutions
 
                 while (i < n)
                 {
-                    if (str[i] > str[max])
+                    if (s[i] > s[max])
                         max = i;
 
                     i++;
                 }
 
-                answer += str[max];
+                answer += s[max];
                 index = max + 1;
             }
 

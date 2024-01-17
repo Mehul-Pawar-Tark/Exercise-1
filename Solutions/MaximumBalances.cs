@@ -8,34 +8,29 @@ namespace Solutions
 {
     public class MaximumBalances
     {
-        public string str="";
-
-        public void setInput()
+        public int solve(String s)
         {
-            this.str = "(()(";
-        }
-        public int solve(String str)
-        {
-            int beauty = 0;
+            int Beauty = 0;
 
-            int start = 0;
-            int end = 0;
-            int count= 0;
+            int Start_Parentheses = 0;
+            int End_Parentheses = 0;
+            int Pair_Of_Parentheses= 0;
 
-            for(int i=0; i<str.Length; i++)
+            for(int i=0; i<s.Length; i++)
             {
-                if (str[i] == '(')
-                    start++;
+                if (s[i] == '(')
+                    Start_Parentheses++;
                 
-                if (str[i]==')')
-                    end++;
+                if (s[i]==')')
+                    End_Parentheses++;
                     
             }
-            count=start<end?start:end;
 
-            beauty=(count*(count+1))/2;
+            Pair_Of_Parentheses = Start_Parentheses < End_Parentheses ? Start_Parentheses : End_Parentheses;
 
-            return beauty;
+            Beauty=(Pair_Of_Parentheses*(Pair_Of_Parentheses+1))/2;
+
+            return Beauty;
         }
     }
 }

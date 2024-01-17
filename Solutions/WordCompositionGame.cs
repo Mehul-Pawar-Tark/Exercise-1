@@ -8,32 +8,28 @@ namespace Solutions
 {
     public class WordCompositionGame
     {
-        public String[] list1 = { "cat", "dog", "pig", "mouse" };
-        public String[] list2 = { "cat", "pig" };
-        public String[] list3 = {"dog", "cat"};
-
-    public String score(String[] list1, String[] list2, String[] list3)
+        public String score(String[] listA, String[] listB, String[] listC)
         { 
 
             String Score = "";
-            Score+=firstScore(list1, list2, list3) + "/";
-            Score+=firstScore(list2, list1, list3) + "/";
-            Score+=firstScore(list3, list2, list1);
+            Score+=firstScore(listA, listB, listC) + "/";
+            Score+=firstScore(listB, listA, listC) + "/";
+            Score+=firstScore(listC, listB, listA);
 
             return Score;
         }
 
-        public int firstScore(String[] list1, String[] list2, String[] list3)
+        public int firstScore(String[] listA, String[] listB, String[] listC)
         {
 
             int first_score = 0;
 
-            for (int i = 0; i < list1.Length; i++)
+            for (int i = 0; i < listA.Length; i++)
             {
-                if ((!list2.Contains(list1[i])) && (!list3.Contains(list1[i])))
+                if ((!listB.Contains(listA[i])) && (!listC.Contains(listA[i])))
                     first_score += 3;
                 
-                else if ((!list2.Contains(list1[i])) || (!list3.Contains(list1[i])))
+                else if ((!listB.Contains(listA[i])) || (!listC.Contains(listA[i])))
                     first_score += 2;
                 
                 else

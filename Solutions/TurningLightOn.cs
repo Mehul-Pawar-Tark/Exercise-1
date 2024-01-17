@@ -8,54 +8,36 @@ namespace Solutions
 {
     public class TurningLightOn
     {
-        public String[] pannel = { "0101", "1010", "0101", "1010" };
-      
-        public int minFlips(String[] pannel)
+       
+        public int minFlips(String[] board)
         {
-           int flips = 0;
+            int Row = board.Length;
+            int Column = board[0].Length;
 
-            for (int row = pannel.Length-1; row>=0; row--)
+            int[,] values = new int[Row,Column];
+
+            for (int row =Row - 1; row >= 0; row--)
             {
-                for(int col = pannel[row].Length-1; col>=0; col--)
+                for (int column = Column - 1; column >= 0; column--)
                 {
-                    if (pannel[row][col] == '0')
-                    {
-                        pannel=flip(row, col,pannel);
-                        flips++;
-                    }
+                    int val = 0;
+                    if ((row + 1) < Row)
+                        val = values[(row + 1), column] > val ? values[(row + 1), column] : val;
+                    if ((column + 1) < Column)
+                        val = values[row , (column+1)] > val ? values[row , (column+1)] : val;
+
+                    if(val%2==0 && board[row][column]=='0')
+                        val++;
+                 
+                    if (val % 2 == 1 && board[row][column] == '1')
+                        val++;
+                   
+                    values[row ,column] = val;
+
                 }
             }
-             Console.WriteLine(flips);
-           return flips;
+            return values[0,0];
         }
 
-        public String[] flip(int Row, int Col, String[] pannel) 
-        { 
-            for(int row=0; row<=Row; row++)
-            {
-                
-                String bubles= pannel[row];
-                String flipedbubles = "";
-
-                for(int col=0; col<bubles.Length; col++)
-                {
-                   if(col<=Col)
-                   {
-                        if (bubles[col]=='0')
-                            flipedbubles += "1";
-                        else
-                            flipedbubles += "0";
-                   }
-                   else
-                    {
-                        flipedbubles+= bubles[col];
-                    }
-                }
-
-                pannel[row] = flipedbubles;
-            }
-
-            return pannel;
-        }
     }
 }

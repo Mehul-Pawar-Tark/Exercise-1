@@ -8,50 +8,32 @@ namespace Solutions
 {
     public class Mailbox
     { 
-
-        public String Collection = "";
-        public String[] addresses = { "123C", "123A", "123 ADA" };
-
-       
-        public int impossible(String Collection, String[] addresses)
+        public int impossible(String collection, String[] addresses)
         {
             int impossible_address = 0;
 
-            int length=Collection.Length;
-            bool[] isused_charector = new bool[length];
-
-
             foreach (string address in addresses)
             {
-                //initially all charactors are unused
-                for(int isused_index=0; isused_index<length; isused_index++)
-                {
-                    isused_charector[isused_index] = false;
-                }
+                char[] Collection_Arr=collection.ToCharArray();
+                char[] Address = address.ToCharArray();
 
-
-                for (int address_index = 0; address_index < address.Length; address_index++)
+                foreach(char character_of_address in Address)
                 {
                     //if character is space than don't need to find it
-                    bool character_found = address[address_index]==' ';
+                    if (character_of_address == ' ') continue;
 
-                    for (int Collection_index=0; Collection_index < length && !character_found; Collection_index++) 
-                    {
-                        if (!isused_charector[Collection_index] && Collection[Collection_index] == address[address_index])
-                        {
-                            isused_charector[Collection_index] = true;
-                            character_found = true;
-                            break;
-                        }
-                    }
+                    int index = Array.IndexOf(Collection_Arr, character_of_address);
 
-                    if(!character_found)
+                    if(index!=-1)
+                        Collection_Arr[index] ='-';
+                    
+                    else
                     {
                         impossible_address++;
                         break;
                     }
                 }
-            
+
             }
 
             return impossible_address;
