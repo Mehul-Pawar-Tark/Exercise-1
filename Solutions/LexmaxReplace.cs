@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 namespace Solutions
 {
     public class LexmaxReplace
-    {
+    { 
+        
         public String get(String s,String t) 
         {
             String lexicographicalString = "";

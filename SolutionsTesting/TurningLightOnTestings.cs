@@ -32,7 +32,7 @@ namespace SolutionsTesting
 
         public int[] getAnswer()
         {
-            return new int[] { 1, 0, 3, 7 };
+            return new int[] { 1, 0, 3, 7, 16};
         }
 
         public List<String[]> getBoards()
@@ -42,6 +42,8 @@ namespace SolutionsTesting
             Boards.Add(new String[] { "1111111", "1111111", "1111111" });
             Boards.Add(new String[] { "01001" });
             Boards.Add(new String[] { "0101", "1010", "0101", "1010" });
+            Boards.Add(new string[] { "1111", "1010", "1111", "1010" });
+            
 
             return Boards;
         }

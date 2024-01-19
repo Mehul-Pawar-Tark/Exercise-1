@@ -95,13 +95,13 @@ namespace Solutions
             #region Solution 13 : PrintScheduler
             PrintScheduler printScheduler = new PrintScheduler();
             String[] threads = { "ABCDE" };
-            String[] slices = { "0 20", "0 21" };
+            String[] slices = { "0 21", "0 22" };
             Console.WriteLine(printScheduler.getOutput(threads, slices));
             #endregion
-        
+
             #region Solution 14 : TurningLightOn
             TurningLightOn turningLightOn = new TurningLightOn();
-            Console.WriteLine(turningLightOn.minFlips(new string[] { "0101", "1010", "0101", "1010" }));
+            Console.WriteLine(turningLightOn.minFlips(new string[] {"1111","1010","1111","1010"}));
             #endregion
 
         }

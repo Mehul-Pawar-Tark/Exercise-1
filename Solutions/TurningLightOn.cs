@@ -8,36 +8,75 @@ namespace Solutions
 {
     public class TurningLightOn
     {
-       
         public int minFlips(String[] board)
         {
             int Row = board.Length;
             int Column = board[0].Length;
 
-            int[,] values = new int[Row,Column];
+            int Total_changes = 0;
+            bool[] val=new bool[Column];
 
-            for (int row =Row - 1; row >= 0; row--)
+            for (int row = Row - 1; row >= 0; row--)
             {
+                bool col_change = false;
                 for (int column = Column - 1; column >= 0; column--)
                 {
-                    int val = 0;
-                    if ((row + 1) < Row)
-                        val = values[(row + 1), column] > val ? values[(row + 1), column] : val;
-                    if ((column + 1) < Column)
-                        val = values[row , (column+1)] > val ? values[row , (column+1)] : val;
+                    bool change = val[column]!=col_change;
 
-                    if(val%2==0 && board[row][column]=='0')
-                        val++;
-                 
-                    if (val % 2 == 1 && board[row][column] == '1')
-                        val++;
-                   
-                    values[row ,column] = val;
+                    if ((!change) && board[row][column] == '0')
+                    {
+                        change = !change;           
+                        col_change = !col_change;
+                        Total_changes++;
 
+                    }
+                    else if (change && board[row][column] == '1')
+                    {
+                        change = !change;
+                        col_change = !col_change;
+                        Total_changes++;
+                    }
+
+                    val[column] = change;
                 }
             }
-            return values[0,0];
+
+            return Total_changes;
         }
 
+        public int minFlips1(String[] board)
+        {
+            int Row = board.Length;
+            int Column = board[0].Length;
+
+            int[] value= new int[Column];
+
+            for (int row = Row - 1; row >= 0; row--)
+            {
+                int column_change = 0;
+
+                for (int column = Column - 1; column >= 0; column--)
+                {
+                    int changes = value[column] + column_change;
+
+                    if (changes % 2 == 0 && board[row][column] == '0')
+                    {
+                        column_change++;
+                        changes++;
+
+                    }
+                    else if (changes % 2 == 1 && board[row][column] == '1')
+                    {
+                        column_change++;
+                        changes++;
+                    }
+
+                    value[column] = changes;
+                }
+            }
+
+            return value[0];
+        }
+       
     }
 }

@@ -8,6 +8,7 @@ namespace Solutions
 {
     public class SortingSubsets
     {   
+      
         public int getMinimalSize(int[] a)   
         {
             int change = 0;

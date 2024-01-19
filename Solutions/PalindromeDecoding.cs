@@ -8,6 +8,7 @@ namespace Solutions
 {
     public class PalindromeDecoding
     {
+       
         public String decode(String Code, int[] position, int[] lengths)  
         {
             for (int i = 0; i < position.Length; i++)

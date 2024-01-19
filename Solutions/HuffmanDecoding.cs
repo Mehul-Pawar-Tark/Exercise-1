@@ -8,7 +8,8 @@ namespace Solutions
 {
     public class HuffmanDecoding
     {
-        public String decode(String archive, String[] dictionary)   //Convert encoded String in Original Text 
+        
+        public String decode(String archive, String[] dictionary)   
         {
            
             String OriginalText = "";

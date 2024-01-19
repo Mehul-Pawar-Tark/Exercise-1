@@ -7,11 +7,14 @@ using System.Threading.Tasks;
 namespace Solutions
 {
     public class PrintScheduler
+
     {
+
         public String getOutput(String[] threads, String[] slices)
         {
             String ThreadsAccurence = "";
 
+            Console.WriteLine();
             //indexes[] for representing each threads index
             int[] indexes = new int[threads.Length];
 
@@ -35,7 +38,7 @@ namespace Solutions
 
                 #endregion
                 int Thread_Index = int.Parse(Thread_Index_string);
-      
+
 
                 #region Find Duration from time_slice
 
@@ -48,17 +51,43 @@ namespace Solutions
                 #endregion
                 int Duration = int.Parse(Duration_String);
 
-                for (int time = 0; time < Duration; time++)
-                {
-                    String Running_Thread = threads[Thread_Index];
-                    ThreadsAccurence += Running_Thread[indexes[Thread_Index]];
+                String Running_Thread = threads[Thread_Index];
+                int len = Running_Thread.Length;
 
-                    indexes[Thread_Index]++;
-                    indexes[Thread_Index] %= Running_Thread.Length;
+
+                if (Duration <= len)
+                {
+                    for (int time = 0; time < Duration; time++)
+                    {
+                        int index = indexes[Thread_Index];
+                        ThreadsAccurence += Running_Thread[index];
+
+                        indexes[Thread_Index]++;
+                        indexes[Thread_Index] %= len;
+                    }
+                }
+                else
+                {
+                    int index = indexes[Thread_Index];
+                    ThreadsAccurence += Running_Thread.Substring(index);
+
+                    index = (index + Duration) % len;
+                    indexes[Thread_Index] = index;
+
+                    Duration -= Running_Thread.Substring(index).Length;
+                    Duration -= Running_Thread.Substring(0, index).Length;
+
+                    for (int i = 0; i < (Duration / len); i++)
+                    {
+                        ThreadsAccurence += Running_Thread;
+                    }
+
+                    ThreadsAccurence += Running_Thread.Substring(0, index);
                 }
             }
 
             return ThreadsAccurence;
         }
+
     }
 }
