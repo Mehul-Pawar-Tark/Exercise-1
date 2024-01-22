@@ -38,7 +38,7 @@ namespace Solutions
 
             String str = "misip";
             int[] position = new int[]{2, 3, 1, 7};
-            int[] lengths = new int[] { 1, 1, 2, 2 };
+            int[] lengths = new int[]{1, 1, 2, 2};
 
             Console.WriteLine(palindromeDecoding.decode(str,position,lengths));
             #endregion
