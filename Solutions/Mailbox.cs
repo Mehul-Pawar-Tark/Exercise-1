@@ -51,9 +51,7 @@ namespace Solutions
                         impossible_address++;
                         break;
                     }
-                        
                 }
-
             }
 
             return impossible_address;
