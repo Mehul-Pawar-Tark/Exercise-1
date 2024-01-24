@@ -14,6 +14,12 @@ namespace Solutions
            
             String OriginalText = "";
 
+            Dictionary<string,char> Dictionary = new Dictionary<string,char>();
+
+            char Value = 'A';
+            foreach(String Key in dictionary) 
+                Dictionary.Add(Key, Value++);
+
             int index = 0;
             int n = archive.Length;
 
@@ -23,9 +29,9 @@ namespace Solutions
                 {
                     key += archive[index++];
 
-                    if (dictionary.Contains(key))
+                    if (Dictionary.ContainsKey(key))
                     {
-                        OriginalText += (char) ( ((int)('A')) + (Array.IndexOf(dictionary,key) ) );
+                        OriginalText += Dictionary[key];
                         key = "";
                      
                     }
